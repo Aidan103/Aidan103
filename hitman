@@ -1,0 +1,48 @@
+import random
+
+# Define the player's attributes
+player_health = 100
+player_attack = 20
+
+# Define the enemy's attributes
+enemy_health = 50
+enemy_attack = 10
+
+# Game loop
+while True:
+    # Display player and enemy health
+    print(f"Player Health: {player_health}")
+    print(f"Enemy Health: {enemy_health}")
+
+    # Ask the player to choose an action
+    print("Choose an action:")
+    print("1. Attack")
+    print("2. Heal")
+    choice = input("Enter your choice: ")
+
+    # Handle player's choice
+    if choice == "1":
+        # Player attacks the enemy
+        damage = random.randint(0, player_attack)
+        enemy_health -= damage
+        print(f"You attack the enemy and deal {damage} damage!")
+    elif choice == "2":
+        # Player heals
+        heal_amount = random.randint(10, 20)
+        player_health += heal_amount
+        print(f"You heal yourself for {heal_amount} health points.")
+    else:
+        print("Invalid choice. Try again.")
+
+    # Enemy's turn
+    enemy_damage = random.randint(0, enemy_attack)
+    player_health -= enemy_damage
+    print(f"The enemy attacks you and deals {enemy_damage} damage!")
+
+    # Check for game over conditions
+    if player_health <= 0:
+        print("Game over! You were defeated.")
+        break
+    elif enemy_health <= 0:
+        print("You defeated the enemy! You win!")
+        break
